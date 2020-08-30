@@ -1,9 +1,12 @@
 package com.atsebak.portfoliomanager.integration;
 
-import com.atsebak.portfoliomanager.domain.Coin;
+import com.atsebak.portfoliomanager.domain.crypto.CoinData;
+import com.atsebak.portfoliomanager.domain.crypto.CoinList;
 
 import java.util.List;
 
 public interface CoinApi {
-    List<Coin> getAll();
+    List<CoinList> getCoinList();
+    CoinData getCoinById(String id, boolean localization, boolean tickers, boolean marketData, boolean communityData, boolean developerData, boolean sparkline);
+
 }
