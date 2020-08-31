@@ -1,4 +1,4 @@
-package com.atsebak.portfoliomanager.services;
+package com.atsebak.portfoliomanager.controllers;
 
 import com.atsebak.portfoliomanager.domain.crypto.CoinData;
 import com.atsebak.portfoliomanager.domain.crypto.CoinList;
