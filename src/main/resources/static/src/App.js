@@ -1,30 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
 import './App.css';
-import {Component, useState, useEffect} from 'react';
+import Routes from './routes'
+import { blue, indigo } from '@material-ui/core/colors'
 
-function App() {
-  const [message, setMessage] = useState("");
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: blue[900]
+    },
+    primary: {
+      main: indigo[700]
+    }
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '"Lato"',
+      'sans-serif'
+    ].join(',')
+  }
+});
 
-  useEffect(() => {
-      fetch('/crypto/coins')
-          .then(response => response.text())
-          .then(message => {
-              setMessage(message);
-          });
-  },[])
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1 className="App-title">{message}</h1>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
